@@ -551,7 +551,7 @@ class ControllerExtensionPaymentPayfull extends Controller {
 		$this->load->model('checkout/order');
 
 		$order_info = $this->model_checkout_order->getOrder($order_id);
-		if ($order_info && $post['ErrorCode'] == '00' && ($hash == $post["hash"])) {
+		if ($order_info && $post['ErrorCode'] === '00' && ($hash == $post["hash"])) {
 			$responseData =  $post;
 			$this->model_checkout_order->addOrderHistory($order_id, $this->config->get('payfull_order_status_id'));
 			$this->addSubTotalForInstCommission($responseData);
